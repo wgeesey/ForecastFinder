@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forecast Finder</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'forecastfinder/styles.css' %}">
+</head>
+<body>
+    <h1>Forecast Finder</h1>
+    <form method='POST'>
+        {% csrf_token %}
+        <label for="location">Enter a zipcode or city name:</label>
+        <input type="text" name="location" required>
+        <br>
+        <label for="num_days">Enter the number of days:</label>
+        <input type="number" name="num_days" required>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+    <h2>Forecast Result</h2>
+    <textarea readonly>{{ forecast }}</textarea>
+</body>
+</html>
