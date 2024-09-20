@@ -23,7 +23,7 @@ def forecast_finder(location, num_days):
     # print(num_days)
 
     # API key for weatherapi.com
-    key = 'e2dfcda79bb44a58a31123829241809'
+    key = 'ENTER YOUR API KEY HERE'
     # URL construct to be used in the request.
     api_url = f'http://api.weatherapi.com/v1/forecast.json?key={key}&q={location}&days={num_days}'
     forecast_result = ''
