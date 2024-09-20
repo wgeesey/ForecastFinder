@@ -2,9 +2,8 @@ from django.shortcuts import render
 
 from .forecast_finder import forecast_finder
 
-# Create your views here.
 
-
+# Create my views here.
 def index(request):
     forecast_result = ""
     if request.method == 'POST':
