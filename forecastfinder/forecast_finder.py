@@ -75,11 +75,11 @@ def current_weather(location):
         response.raise_for_status()
         weather_data = response.json()
 
+        # Get the current weather information.
         current_weather_data = {
             'location': weather_data['location']['name'],
             'temperature': weather_data['current']['temp_f'],
             'condition': weather_data['current']['condition']['text'],
-            'humidity': weather_data['current']['humidity'],
             'icon': weather_data['current']['condition']['icon'],  # Weather icon URL
         }
 
