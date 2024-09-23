@@ -6,6 +6,24 @@
     <title>Forecast Finder</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'forecastfinder/styles.css' %}">
+    <style>
+        .forecast-container {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #f9f9f9;
+        }
+        .forecast-day {
+            margin: 10px 0;
+        }
+        .forecast-day h3 {
+            margin: 0;
+        }
+        .forecast-day p {
+            margin: 5px 0;
+        }
+    </style>
 </head>
 <body>
     <h1>Forecast Finder</h1>
@@ -20,6 +38,28 @@
         <button type="submit">Submit</button>
     </form>
     <h2>Forecast Result</h2>
-    <textarea readonly>{{ forecast }}</textarea>
+    <div class="forecast-container">
+        {% for day in forecast %}
+            <div class="forecast-day">
+                <h3>{{ day.date }}</h3>
+                <p>Temperature: {{ day.temperature}}°F</p>
+                <p>Condition: {{ day.condition }}</p>
+                <img src="{{ day.icon }}" alt="Forecast Condition icon"</p>
+            </div>
+        {% empty %}
+            <p>No forecast data available.</p>
+        {% endfor %}
+    </div>
+    <!-- Weather API Widget -->
+    <h2>Current Weather</h2>
+    {% if current_weather %}
+        <h3>{{ current_weather.location }}</h3>
+        <p>Temperature: {{ current_weather.temperature }}°F</p>
+        <p>Conditions: {{ current_weather.condition }}</p>
+        <img src="{{ current_weather.icon }}" alt="Weather icon">
+    </div>
+    {% else %}
+        <p>No current weather data available.</p>
+    {% endif %}
 </body>
 </html>
